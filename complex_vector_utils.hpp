@@ -12,63 +12,86 @@
 #include <vector>
 #include <functional>
 
-using function_1D  = std::function<double(double)>;
+using cdouble = std::complex<double>;
+using cvec = std::vector<cdouble>;
+
+using function_1D  = std::function<cdouble(double)>;
 using list_of_vecs = std::vector<std::vector<double>>;
-
-
 
 //Overload vector operations to make direct products easier
 //V-V Multiplication
-std::vector<double> operator*=(std::vector<double> & a, const std::vector<double> & b);
-std::vector<double> operator*(std::vector<double> a, const std::vector<double> & b);
+cvec operator*=(cvec & a, const cvec & b);
+cvec operator*(cvec a, const cvec & b);
 
 //V-V Division
-std::vector<double> operator/=(std::vector<double> & a, const std::vector<double> & b);
-std::vector<double> operator/(std::vector<double> a, const std::vector<double> & b);
+cvec operator/=(cvec & a, const cvec & b);
+cvec operator/(cvec a, const cvec & b);
 
 //V-V Addition
-std::vector<double> operator+=(std::vector<double> & a, const std::vector<double> & b);
-std::vector<double> operator+(std::vector<double> a, const std::vector<double> & b);
+cvec operator+=(cvec & a, const cvec & b);
+cvec operator+(cvec a, const cvec & b);
 
 //V-V Subtraction
-std::vector<double> operator-=(std::vector<double> & a, const std::vector<double> & b);
-std::vector<double> operator-(std::vector<double> a, const std::vector<double> & b);
+cvec operator-=(cvec & a, const cvec & b);
+cvec operator-(cvec a, const cvec & b);
 
 //V-D Multiplication
-std::vector<double> operator*=(std::vector<double> & v, const double & a);
-std::vector<double> operator*(std::vector<double> v, const double & a);
-std::vector<double> operator*(const double & a, std::vector<double> v);
+cvec operator*=(cvec & v, const double & a);
+cvec operator*(cvec v, const double & a);
+cvec operator*(const double & a, cvec v);
 
 //V-D Division
-std::vector<double> operator/=(std::vector<double> & v, const double & a);
-std::vector<double> operator/(std::vector<double> v, const double & a);
-std::vector<double> operator/(const double & a, std::vector<double> v);
+cvec operator/=(cvec & v, const double & a);
+cvec operator/(cvec v, const double & a);
+cvec operator/(const double & a, cvec v);
 
 //V-D Addition
-std::vector<double> operator+=(std::vector<double> & v, const double & a);
-std::vector<double> operator+(std::vector<double> v, const double & a);
-std::vector<double> operator+(const double & a, std::vector<double> v);
+cvec operator+=(cvec & v, const double & a);
+cvec operator+(cvec v, const double & a);
+cvec operator+(const double & a, cvec v);
 
 //V-D Subtraction
-std::vector<double> operator-=(std::vector<double> & v, const double & a);
-std::vector<double> operator-(std::vector<double> v, const double & a);
-std::vector<double> operator-(const double & a, std::vector<double> v);
+cvec operator-=(cvec & v, const double & a);
+cvec operator-(cvec v, const double & a);
+cvec operator-(const double & a, cvec v);
+
+//-----------------------------------------------
+//V-C Multiplication
+cvec operator*=(cvec & v, const cdouble & a);
+cvec operator*(cvec v, const cdouble & a);
+cvec operator*(const cdouble & a, cvec v);
+
+//V-C Division
+cvec operator/=(cvec & v, const cdouble & a);
+cvec operator/(cvec v, const cdouble & a);
+cvec operator/(const cdouble & a, cvec v);
+
+//V-C Addition
+cvec operator+=(cvec & v, const cdouble & a);
+cvec operator+(cvec v, const cdouble & a);
+cvec operator+(const cdouble & a, cvec v);
+
+//V-C Subtraction
+cvec operator-=(cvec & v, const cdouble & a);
+cvec operator-(cvec v, const cdouble & a);
+cvec operator-(const cdouble & a, cvec v);
 
 //=======================================================
 //Conversions & Integrations
 //Function to integrate over a vector
-double vint(const std::vector<double>& a, double dx=0);
-std::vector<double> vdiff(const std::vector<double>& a, double dx=0);
-std::vector<double> make_grid(double rmin = 0.001, double rmax = 100, int n_grid = 101);
-std::vector<double> vec_from_func(const function_1D& V, const std::vector<double>& rgrid);
-double vsum(const std::vector<double>& a);
-double vnorm(const std::vector<double>& a);
+double vint(const cvec& a, double dx=0);
+cvec vdiff(const cvec& a, double dx=0);
+cvec make_grid(double rmin = 0.001, double rmax = 100, int n_grid = 101);
+cvec vec_from_func(const function_1D& V, const std::vector<double> & rgrid);
+double vsum(const cvec& a);
+double vnorm2(const cvec& a);
+double vnorm(const cvec& a);
 
 //=======================================================
 //Utility Functions
-void printv(const std::vector<double>& a);
-std::vector<double> vcopy(std::vector<double> a);
-std::vector<double> zeros_like(std::vector<double> a);
+void printv(const cvec& a);
+cvec vcopy(cvec a);
+cvec zeros_like(cvec a);
 
 
 #endif //ASSIGNMENT1_VECTOR_UTILS_H

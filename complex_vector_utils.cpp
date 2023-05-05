@@ -95,6 +95,42 @@ cvec operator-=(cvec & v, const double & a){return(v+=a*-1);}
 cvec operator-(cvec v, const double & a){return(v-=a);}
 cvec operator-(const double & a, cvec v){return(v-a);}
 
+//------------------------------------------------------------
+//V-C Multiplication
+cvec operator*=(cvec & v, const cdouble & a){
+    for (int i=0; i<v.size(); i++){
+        v[i]*=a;
+    }
+    return(v);
+}
+cvec operator*(cvec v, const cdouble & a){return(v*=a);}
+cvec operator*(const cdouble & a, cvec v){return(v*a);}
+
+//V-C Division
+cvec operator/=(cvec & v, const cdouble & a){
+    for (int i=0; i<v.size(); i++){
+        v[i]/=a;
+    }
+    return(v);
+}
+cvec operator/(cvec v, const cdouble & a){return(v/=a);}
+cvec operator/(const cdouble & a, cvec v){return(v/a);}
+
+//V-C Addition
+cvec operator+=(cvec & v, const cdouble & a){
+    for (int i=0; i<v.size(); i++){
+        v[i]+=a;
+    }
+    return(v);
+}
+cvec operator+(cvec v, const cdouble & a){return(v+=a);}
+cvec operator+(const cdouble & a, cvec v){return(v+a);}
+
+//V-C Subtraction
+cvec operator-=(cvec & v, const cdouble & a){return(v+=a*-1.0);}
+cvec operator-(cvec v, const cdouble & a){return(v-=a);}
+cvec operator-(const cdouble & a, cvec v){return(v-a);}
+
 //=======================================================
 //Conversions & Integrations
 //Function to integrate over a vector
@@ -123,6 +159,12 @@ cdouble vint(const cvec& a, double dx){
 }
 
 //Function to integrate over a vector
+cvec conj(cvec X){
+    /// Calculate conjugate for all elements in a vector
+    for (int k=0;k<X.size();k++){X[k]=conj(X[k]);}
+    return X;
+}
+
 cvec vdiff(const cvec& a, double dx){
     /// Differentiates a vector with constant spacing
 
@@ -142,7 +184,7 @@ cvec vdiff(const cvec& a, double dx){
 }
 
 cdouble vsum(const cvec& a){
-    /// Summates a vector
+    /// Summates a complex vector
     int n = a.size();
 
     cdouble out = 0;
@@ -152,10 +194,19 @@ cdouble vsum(const cvec& a){
     return out;
 }
 
-cdouble vnorm(const cvec& a){
-    /// gets the normal of a complex vector
-    return pow(vsum(a * a),0.5);
+double vnorm2(const cvec& a){
+    /// gets the square-normal of a complex vector
+    double out =0;
+    for (int k=0;k<a.size();k++){
+        out += norm(a[k]);
+    }
+    return out;
 }
+double vnorm(const cvec& a){
+    /// gets the normal of a complex vector
+    return pow(vnorm2(a),0.5);
+}
+
 
 cvec vec_from_func(const function_1D& V, const std::vector<double>& rgrid){
     ///Converts a 1D potential function into a std::vector for quick-swapping of potential functions
