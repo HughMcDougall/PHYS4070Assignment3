@@ -12,13 +12,10 @@
 #include <iostream>
 #include <complex>
 
+#include "_defs.hpp"
 #include "complex_vector_utils.hpp"
 
-using cdouble = std::complex<double>;
-using cvec = std::vector<cdouble>;
-
-using function_1D  = std::function<cdouble(double)>;
-using diff_func  = std::function<cvec(cvec)>;
+cvec deriv_func(const cvec & X, const double & dx, const double & g = 0.0);
 
 cvec euler_step(cvec &X, const diff_func &f, double dt);
 cvec runge_step(cvec &X, const diff_func &f, double dt);

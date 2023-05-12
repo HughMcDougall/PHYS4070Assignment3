@@ -11,12 +11,7 @@
 
 #include <vector>
 #include <functional>
-
-using cdouble = std::complex<double>;
-using cvec = std::vector<cdouble>;
-
-using function_1D  = std::function<cdouble(double)>;
-using list_of_vecs = std::vector<std::vector<double>>;
+#include "_defs.hpp"
 
 //Overload vector operations to make direct products easier
 //V-V Multiplication
@@ -78,18 +73,26 @@ cvec operator-(const cdouble & a, cvec v);
 
 //=======================================================
 //Conversions & Integrations
-//Function to integrate over a vector
 double vint(const cvec& a, double dx=0);
-cvec vdiff(const cvec& a, double dx=0);
-cvec make_grid(double rmin = 0.001, double rmax = 100, int n_grid = 101);
-cvec vec_from_func(const function_1D& V, const std::vector<double> & rgrid);
 double vsum(const cvec& a);
+cvec vdiff(const cvec& a, double dx=0);
+std::vector<double> make_grid(double rmin = 0.001, double rmax = 100, int n_grid = 101);
+cvec vec_from_func(const function_1D& V, const std::vector<double> & rgrid);
+
+//=======================================================
+// Complex specific functions
+cvec conj(cvec X);
+cvec real_c(cvec X);
+cvec imag_c(cvec X);
+rvec real_d(const cvec & X);
+rvec imag_d(const cvec & X);
 double vnorm2(const cvec& a);
 double vnorm(const cvec& a);
 
 //=======================================================
 //Utility Functions
-void printv(const cvec& a);
+void printv(const cvec& a, const std::string & sep = ", ", std::ostream & targ = std::cout);
+void printv(const rvec& a, const std::string & sep = ", ", std::ostream & targ = std::cout);
 cvec vcopy(cvec a);
 cvec zeros_like(cvec a);
 

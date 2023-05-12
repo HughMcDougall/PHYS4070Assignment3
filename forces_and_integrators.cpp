@@ -11,20 +11,32 @@
 #include <iostream>
 #include <complex>
 
+#include "_defs.hpp"
 #include "complex_vector_utils.hpp"
-
-using cdouble = std::complex<double>;
-using cvec = std::vector<cdouble>;
-
-using function_1D  = std::function<cdouble(double)>;
-using diff_func  = std::function<cvec(cvec)>;
-cdouble ci(0.0,1.0);
 
 //================================================================
 // DERIVATIVE FUNCTION
-cvec deriv_func(const cvec & X, const double & dx){
-    // Get Derivatives
+cvec deriv_func(const cvec & X, const double & dx, const double & g){
+    int N = X.size();
+    double dx2 = dx*dx;
+    cvec out(N);
 
+    // Perform 2nd derivs
+    for (int n=1;n<N-1;n++){
+        out[n]=-1.0*(X[n-1]-2.0*X[n] + X[n+1]) / dx2;
+    }
+
+    // Pad first and last terms
+    out[0]=out[1] * 0.0;
+    out[N-1]=out[N-2] * 0.0;
+
+    //Add attraction term
+    out+= g * (conj(X) * X) * X;
+
+    //Factor of i
+    out*=-1.0*ci;
+
+    return out;
 }
 
 //================================================================

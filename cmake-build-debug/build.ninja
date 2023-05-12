@@ -61,6 +61,12 @@ build CMakeFiles/Assignment_3.dir/complex_vector_utils.cpp.obj: CXX_COMPILER__As
   OBJECT_DIR = CMakeFiles\Assignment_3.dir
   OBJECT_FILE_DIR = CMakeFiles\Assignment_3.dir
 
+build CMakeFiles/Assignment_3.dir/forces_and_integrators.cpp.obj: CXX_COMPILER__Assignment_3_Debug C$:/Users/hughm/OneDrive/UQ/PHYS4070/Assignments/Assignment$ 3/forces_and_integrators.cpp || cmake_object_order_depends_target_Assignment_3
+  DEP_FILE = CMakeFiles\Assignment_3.dir\forces_and_integrators.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Assignment_3.dir
+  OBJECT_FILE_DIR = CMakeFiles\Assignment_3.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Assignment_3
@@ -69,7 +75,7 @@ build CMakeFiles/Assignment_3.dir/complex_vector_utils.cpp.obj: CXX_COMPILER__As
 #############################################
 # Link the executable Assignment_3.exe
 
-build Assignment_3.exe: CXX_EXECUTABLE_LINKER__Assignment_3_Debug CMakeFiles/Assignment_3.dir/main.cpp.obj CMakeFiles/Assignment_3.dir/complex_vector_utils.cpp.obj
+build Assignment_3.exe: CXX_EXECUTABLE_LINKER__Assignment_3_Debug CMakeFiles/Assignment_3.dir/main.cpp.obj CMakeFiles/Assignment_3.dir/complex_vector_utils.cpp.obj CMakeFiles/Assignment_3.dir/forces_and_integrators.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Assignment_3.dir

@@ -12,11 +12,8 @@
 #include <cmath>
 #include <complex>
 
-using cdouble = std::complex<double>;
-using cvec = std::vector<cdouble>;
-
-using function_1D  = std::function<cdouble(double)>;
-using list_of_vecs = std::vector<cvec>;
+//=======================================================
+#include "_defs.hpp"
 
 //=======================================================
 //Overload vector operations to make direct products easier
@@ -158,13 +155,6 @@ cdouble vint(const cvec& a, double dx){
     return out;
 }
 
-//Function to integrate over a vector
-cvec conj(cvec X){
-    /// Calculate conjugate for all elements in a vector
-    for (int k=0;k<X.size();k++){X[k]=conj(X[k]);}
-    return X;
-}
-
 cvec vdiff(const cvec& a, double dx){
     /// Differentiates a vector with constant spacing
 
@@ -183,6 +173,20 @@ cvec vdiff(const cvec& a, double dx){
     return out;
 }
 
+std::vector<double> make_grid(double rmin = 0.001, double rmax = 100, int n_grid = 101){
+    /// Creates a linspace of radial grid points. Saves time on passing the same args to every function
+    double dr = (rmax-rmin) / (n_grid-1);
+    double r = rmin;
+    std::vector<double> out(n_grid);
+
+    for (int i=0; i<n_grid; i++){
+        out[i]=r;
+        r+=dr;
+    }
+
+    return out;
+}
+
 cdouble vsum(const cvec& a){
     /// Summates a complex vector
     int n = a.size();
@@ -191,6 +195,53 @@ cdouble vsum(const cvec& a){
     for (int i=0; i<n; i++){ //Odd Indices
         out+=a[i];
     }
+    return out;
+}
+
+cvec vec_from_func(const function_1D& V, const std::vector<double>& rgrid){
+    ///Converts a 1D potential function into a std::vector for quick-swapping of potential functions
+    int n_grid = rgrid.size();
+    cvec out(n_grid);
+
+    for (int i=0; i<n_grid; i++){
+        out[i]=V(rgrid[i]);
+    }
+
+    return out;
+}
+
+//=======================================================
+// Complex specific functions
+
+cvec conj(cvec X){
+    /// Calculate conjugate for all elements in a vector
+    for (int k=0;k<X.size();k++){X[k]=conj(X[k]);}
+    return X;
+}
+
+cvec real_c(cvec X){
+    /// Return real component for all elements in a vector
+    for (int k=0;k<X.size();k++){X[k]=real(X[k]);}
+    return X;
+}
+
+cvec imag_c(cvec X){
+    /// Return imaginary component for all elements in a vector
+    for (int k=0;k<X.size();k++){X[k]=imag(X[k]);}
+    return X;
+}
+
+rvec real_d(const cvec & X){
+    /// Return real component for all elements in a vector as a vector of doubles
+    rvec out(X.size());
+    for (int k=0;k<X.size();k++){out[k]=(double)real(X[k]);}
+    return out;
+}
+
+rvec imag_d(const cvec & X){
+    /// Return imaginary component for all elements in a vector as a vector of doubles
+    rvec out(X.size());
+    for (int k=0;k<X.size();k++){out[k]=(double)imag(X[k]);}
     return out;
 }
 
@@ -208,26 +259,22 @@ double vnorm(const cvec& a){
 }
 
 
-cvec vec_from_func(const function_1D& V, const std::vector<double>& rgrid){
-    ///Converts a 1D potential function into a std::vector for quick-swapping of potential functions
-    int n_grid = rgrid.size();
-    cvec out(n_grid);
-
-    for (int i=0; i<n_grid; i++){
-        out[i]=V(rgrid[i]);
-    }
-
-    return out;
-}
-
 //=======================================================
 //Utility Functions
-void printv(const cvec& a){
-    /// Prints all elements in a 1D vector of doubles to std::cout. Good for debugging
+void printv(const cvec& a, const std::string & sep, std::ostream & targ){
+    /// Prints all elements in a 1D vector of complex doubles
     for (int i=0; i<a.size(); i++){
-        std::cout << a[i] << ", ";
+        targ<< a[i] << sep;
     }
-    std::cout<<"\n";
+    targ<<"\n";
+}
+
+void printv(const rvec& a, const std::string & sep, std::ostream & targ){
+    /// Prints all elements in a 1D vector of doubles
+    for (int i=0; i<a.size(); i++){
+        targ<< a[i] << sep;
+    }
+    targ<<"\n";
 }
 
 cvec vcopy(cvec a){
