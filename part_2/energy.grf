@@ -1,0 +1,71 @@
+;This file was created by Graph (http://www.padowan.dk)
+;Do not change this file from other programs.
+[Graph]
+Version = 4.4.2.543
+MinVersion = 2.5
+OS = Windows NT 6.2 
+
+[Axes]
+xMin = 0
+xMax = 8
+xTickUnit = 1
+xGridUnit = 1
+yMin = -0.5
+yMax = 0
+yTickUnit = 0.05
+yGridUnit = 0.05
+AxesColor = clBlue
+GridColor = 0x00FF9999
+NumberFont = CMU Serif,10,clBlack,B
+LabelFont = CMU Serif,12,clBlack,B
+LegendFont = CMU Serif,8,clBlack,B
+ShowLegend = 0
+Radian = 1
+
+[Func1]
+FuncType = 0
+y = -1/4*x
+Visible = 0
+Style = 1
+Color = clBlack
+Size = 2
+
+[Func2]
+FuncType = 0
+y = -1/2/pi * (2+x) * en(8x / (2+x)^2)
+Visible = 0
+LegendText = Analytical
+From = 0
+Color = clBlack
+Size = 2
+
+[Func3]
+FuncType = 0
+y = df(x)
+Visible = 0
+From = 0
+Color = clBlack
+Size = 2
+
+[Func4]
+FuncType = 0
+y = ddf(x)
+From = 0
+Color = clBlack
+Size = 2
+
+[Data]
+TextLabelCount = 0
+FuncCount = 4
+PointSeriesCount = 0
+ShadeCount = 0
+RelationCount = 0
+OleObjectCount = 0
+
+[CustomFunctions]
+en(x) = integrate(sqrt(1-x*sin(k)^2),k,0,pi/2)
+dg = .0001
+df(x) = ( f(x+dg) - f(x-dg) ) / 2/dg
+ddf(x) = (f(x-dg) - 2*f(x) + f(x+dg)) / dg^2
+f(x) = -1/2/pi * (2+x) * en(8x / (2+x)^2)
+
