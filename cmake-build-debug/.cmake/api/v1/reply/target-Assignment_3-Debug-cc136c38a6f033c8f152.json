@@ -27,7 +27,7 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 6,
+				"line" : 7,
 				"parent" : 0
 			}
 		]
@@ -52,9 +52,10 @@
 			},
 			"sourceIndexes" : 
 			[
-				0,
 				1,
-				3
+				2,
+				3,
+				4
 			]
 		}
 	],
@@ -88,19 +89,20 @@
 	"sourceGroups" : 
 	[
 		{
-			"name" : "Source Files",
-			"sourceIndexes" : 
-			[
-				0,
-				1,
-				3
-			]
-		},
-		{
 			"name" : "Header Files",
 			"sourceIndexes" : 
 			[
-				2
+				0
+			]
+		},
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				1,
+				2,
+				3,
+				4
 			]
 		}
 	],
@@ -108,26 +110,32 @@
 	[
 		{
 			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "main.cpp",
+			"path" : "part_2/matrix.hpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "complex_vector_utils.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"path" : "_defs.hpp",
+			"path" : "part_2/matrix.cpp",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "forces_and_integrators.cpp",
-			"sourceGroupIndex" : 0
+			"path" : "part_2/LP_solvers.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "part_2/vector_utils.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "part_2/main.cpp",
+			"sourceGroupIndex" : 1
 		}
 	],
 	"type" : "EXECUTABLE"

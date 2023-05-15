@@ -8,17 +8,6 @@
 #include "forces_and_integrators.hpp"
 #include "_defs.hpp"
 
-cvec testfunc_loc(){
-    cvec out(10);
-    return out;
-}
-
-cdouble testfunc_loc_2(const cvec & X){
-    cdouble out;
-    out = X[0];
-    return out;
-}
-
 int main(int argc, char *argv[]) {
     //-------------------------
     // Sim parameters
