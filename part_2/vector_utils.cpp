@@ -8,6 +8,7 @@
 #include <vector>
 #include <cassert>
 #include <functional>
+#include "_defs.hpp"
 
 using function_1D  = std::function<double(double)>;
 using list_of_vecs = std::vector<std::vector<double>>;
@@ -116,6 +117,17 @@ double vint(const std::vector<double>& a, double dx){
     return out;
 }
 
+double vsum(const std::vector<double> & a){
+    /// Summates a complex vector
+    int n = a.size();
+
+    double out = 0;
+    for (int i=0; i<n; i++){ //Odd Indices
+        out+=a[i];
+    }
+    return out;
+}
+
 //Function to integrate over a vector
 std::vector<double> vdiff(const std::vector<double>& a, double dx){
     /// Differentiates a vector with constant spacing
@@ -163,12 +175,12 @@ std::vector<double> vec_from_func(const function_1D& V, const std::vector<double
 
 //=======================================================
 //Utility Functions
-void printv(const std::vector<double>& a){
-    /// Prints all elements in a 1D vector of doubles to std::cout. Good for debugging
+void printv(const std::vector<double>& a, const std::string & sep, std::ostream & targ){
+    /// Prints all elements in a 1D vector of complex doubles
     for (int i=0; i<a.size(); i++){
-        std::cout << a[i] << ", ";
+        targ<< a[i] << sep;
     }
-    std::cout<<"\n";
+    targ<<"\n";
 }
 
 std::vector<double> vcopy(std::vector<double> a){
@@ -179,4 +191,11 @@ std::vector<double> vcopy(std::vector<double> a){
 std::vector<double> zeros_like(std::vector<double> a){
     /// Returns a copy of vector to assign a second version of it.
     return(a*0);
+}
+
+//=======================================================
+// Vector Products
+double operator&(const std::vector<double> & a, const std::vector<double> & b){
+    double out = vsum(a*b);
+    return out;
 }

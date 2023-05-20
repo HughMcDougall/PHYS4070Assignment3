@@ -2,21 +2,22 @@
 // header file for matrix class. Adapted from workshop 2 examples
 //
 
-#ifndef ASSIGNMENT1_MATRIX_H
-#define ASSIGNMENT1_MATRIX_H
+#ifndef ASSIGNMENT1_MATRIX_COMPLEX_H
+#define ASSIGNMENT1_MATRIX_COMPLEX_H
 
 #pragma once
 #include <cassert>
 #include <vector>
 #include <iostream>
+#include <complex>
 
 //----------------------------------
 using unt = std::size_t;
 //----------------------------------
-namespace matrix{
-    using dtype = double;
+namespace matrix_complex{
+    using dtype = std::complex<double>;
 
-    class sqmatrix{
+    class sqmatrix_complex{
 
     private:
         std::vector<dtype> _datavec;
@@ -25,7 +26,7 @@ namespace matrix{
 
     public:
         //Init
-        sqmatrix(int N): _N(N), _size(N*N){_datavec.resize(_size);}
+        sqmatrix_complex(int N): _N(N), _size(N*N){_datavec.resize(_size);}
 
         //Gets
         dtype& at(unt i, unt j)        {return _datavec[i * _N + j];}            //For assigning
@@ -63,34 +64,34 @@ namespace matrix{
             return(out);
         }
 
-    };//sqmatrix
+    };//sqmatrix_complex
     // -----------------------------
     //Declare overload operators. Defined properly in cpp file
-    sqmatrix operator+=(sqmatrix &a, const sqmatrix &b);
-    sqmatrix operator+=(sqmatrix &a, const dtype &b);
-    sqmatrix operator-=(sqmatrix &a, const sqmatrix &b);
-    sqmatrix operator-=(sqmatrix &a, const dtype &b);
-    sqmatrix operator*=(sqmatrix &a, const sqmatrix &b);
-    sqmatrix operator*=(sqmatrix &a, const dtype &b);
-    sqmatrix operator/=(sqmatrix &a, const sqmatrix &b);
-    sqmatrix operator/=(sqmatrix &a, const dtype &b);
+    sqmatrix_complex operator+=(sqmatrix_complex &a, const sqmatrix_complex &b);
+    sqmatrix_complex operator+=(sqmatrix_complex &a, const dtype &b);
+    sqmatrix_complex operator-=(sqmatrix_complex &a, const sqmatrix_complex &b);
+    sqmatrix_complex operator-=(sqmatrix_complex &a, const dtype &b);
+    sqmatrix_complex operator*=(sqmatrix_complex &a, const sqmatrix_complex &b);
+    sqmatrix_complex operator*=(sqmatrix_complex &a, const dtype &b);
+    sqmatrix_complex operator/=(sqmatrix_complex &a, const sqmatrix_complex &b);
+    sqmatrix_complex operator/=(sqmatrix_complex &a, const dtype &b);
 
-    sqmatrix operator+(sqmatrix a, const sqmatrix &b);
-    sqmatrix operator+(sqmatrix a, const dtype &b);
-    sqmatrix operator+(const dtype &b, sqmatrix a);
-    sqmatrix operator-(sqmatrix a, const sqmatrix &b);
-    sqmatrix operator-(sqmatrix a, const dtype &b);
-    sqmatrix operator*(sqmatrix a, const sqmatrix &b);
-    sqmatrix operator*(sqmatrix a, const dtype &b);
-    sqmatrix operator*(const dtype &b, sqmatrix a);
-    sqmatrix operator/(sqmatrix a, const sqmatrix &b);
-    sqmatrix operator/(sqmatrix a, const dtype &b);
+    sqmatrix_complex operator+(sqmatrix_complex a, const sqmatrix_complex &b);
+    sqmatrix_complex operator+(sqmatrix_complex a, const dtype &b);
+    sqmatrix_complex operator+(const dtype &b, sqmatrix_complex a);
+    sqmatrix_complex operator-(sqmatrix_complex a, const sqmatrix_complex &b);
+    sqmatrix_complex operator-(sqmatrix_complex a, const dtype &b);
+    sqmatrix_complex operator*(sqmatrix_complex a, const sqmatrix_complex &b);
+    sqmatrix_complex operator*(sqmatrix_complex a, const dtype &b);
+    sqmatrix_complex operator*(const dtype &b, sqmatrix_complex a);
+    sqmatrix_complex operator/(sqmatrix_complex a, const sqmatrix_complex &b);
+    sqmatrix_complex operator/(sqmatrix_complex a, const dtype &b);
 
     // -----------------------------
     // Utility functions & Dot products
-    sqmatrix eye(unt n);
-    sqmatrix operator&(const sqmatrix & a, const sqmatrix & b);
-    sqmatrix kron_prod(const sqmatrix & a, const sqmatrix & b);
+    sqmatrix_complex eye(unt n);
+    sqmatrix_complex exp(sqmatrix_complex const & X);
+    sqmatrix_complex operator&(const sqmatrix_complex & a, const sqmatrix_complex & b);
 
 } //Namespace
 

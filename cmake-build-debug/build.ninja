@@ -55,12 +55,6 @@ build CMakeFiles/Assignment_3.dir/part_2/matrix.cpp.obj: CXX_COMPILER__Assignmen
   OBJECT_DIR = CMakeFiles\Assignment_3.dir
   OBJECT_FILE_DIR = CMakeFiles\Assignment_3.dir\part_2
 
-build CMakeFiles/Assignment_3.dir/part_2/LP_solvers.cpp.obj: CXX_COMPILER__Assignment_3_Debug C$:/Users/hughm/OneDrive/UQ/PHYS4070/Assignments/Assignment$ 3/part_2/LP_solvers.cpp || cmake_object_order_depends_target_Assignment_3
-  DEP_FILE = CMakeFiles\Assignment_3.dir\part_2\LP_solvers.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\Assignment_3.dir
-  OBJECT_FILE_DIR = CMakeFiles\Assignment_3.dir\part_2
-
 build CMakeFiles/Assignment_3.dir/part_2/vector_utils.cpp.obj: CXX_COMPILER__Assignment_3_Debug C$:/Users/hughm/OneDrive/UQ/PHYS4070/Assignments/Assignment$ 3/part_2/vector_utils.cpp || cmake_object_order_depends_target_Assignment_3
   DEP_FILE = CMakeFiles\Assignment_3.dir\part_2\vector_utils.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
@@ -73,6 +67,30 @@ build CMakeFiles/Assignment_3.dir/part_2/main.cpp.obj: CXX_COMPILER__Assignment_
   OBJECT_DIR = CMakeFiles\Assignment_3.dir
   OBJECT_FILE_DIR = CMakeFiles\Assignment_3.dir\part_2
 
+build CMakeFiles/Assignment_3.dir/part_2/matrix_complex.cpp.obj: CXX_COMPILER__Assignment_3_Debug C$:/Users/hughm/OneDrive/UQ/PHYS4070/Assignments/Assignment$ 3/part_2/matrix_complex.cpp || cmake_object_order_depends_target_Assignment_3
+  DEP_FILE = CMakeFiles\Assignment_3.dir\part_2\matrix_complex.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Assignment_3.dir
+  OBJECT_FILE_DIR = CMakeFiles\Assignment_3.dir\part_2
+
+build CMakeFiles/Assignment_3.dir/part_2/dot_and_convert.cpp.obj: CXX_COMPILER__Assignment_3_Debug C$:/Users/hughm/OneDrive/UQ/PHYS4070/Assignments/Assignment$ 3/part_2/dot_and_convert.cpp || cmake_object_order_depends_target_Assignment_3
+  DEP_FILE = CMakeFiles\Assignment_3.dir\part_2\dot_and_convert.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Assignment_3.dir
+  OBJECT_FILE_DIR = CMakeFiles\Assignment_3.dir\part_2
+
+build CMakeFiles/Assignment_3.dir/part_2/complex_vector_utils.cpp.obj: CXX_COMPILER__Assignment_3_Debug C$:/Users/hughm/OneDrive/UQ/PHYS4070/Assignments/Assignment$ 3/part_2/complex_vector_utils.cpp || cmake_object_order_depends_target_Assignment_3
+  DEP_FILE = CMakeFiles\Assignment_3.dir\part_2\complex_vector_utils.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Assignment_3.dir
+  OBJECT_FILE_DIR = CMakeFiles\Assignment_3.dir\part_2
+
+build CMakeFiles/Assignment_3.dir/part_2/physical_properties.cpp.obj: CXX_COMPILER__Assignment_3_Debug C$:/Users/hughm/OneDrive/UQ/PHYS4070/Assignments/Assignment$ 3/part_2/physical_properties.cpp || cmake_object_order_depends_target_Assignment_3
+  DEP_FILE = CMakeFiles\Assignment_3.dir\part_2\physical_properties.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Assignment_3.dir
+  OBJECT_FILE_DIR = CMakeFiles\Assignment_3.dir\part_2
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Assignment_3
@@ -81,7 +99,7 @@ build CMakeFiles/Assignment_3.dir/part_2/main.cpp.obj: CXX_COMPILER__Assignment_
 #############################################
 # Link the executable Assignment_3.exe
 
-build Assignment_3.exe: CXX_EXECUTABLE_LINKER__Assignment_3_Debug CMakeFiles/Assignment_3.dir/part_2/matrix.cpp.obj CMakeFiles/Assignment_3.dir/part_2/LP_solvers.cpp.obj CMakeFiles/Assignment_3.dir/part_2/vector_utils.cpp.obj CMakeFiles/Assignment_3.dir/part_2/main.cpp.obj
+build Assignment_3.exe: CXX_EXECUTABLE_LINKER__Assignment_3_Debug CMakeFiles/Assignment_3.dir/part_2/matrix.cpp.obj CMakeFiles/Assignment_3.dir/part_2/vector_utils.cpp.obj CMakeFiles/Assignment_3.dir/part_2/main.cpp.obj CMakeFiles/Assignment_3.dir/part_2/matrix_complex.cpp.obj CMakeFiles/Assignment_3.dir/part_2/dot_and_convert.cpp.obj CMakeFiles/Assignment_3.dir/part_2/complex_vector_utils.cpp.obj CMakeFiles/Assignment_3.dir/part_2/physical_properties.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Assignment_3.dir

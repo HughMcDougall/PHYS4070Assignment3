@@ -2,13 +2,12 @@
 // Created by hughm on 13/03/2023.
 //
 
-#ifndef ASSIGNMENT1_VECTOR_UTILS_H
-#define ASSIGNMENT1_VECTOR_UTILS_H
+#ifndef ASSIGNMENT1_COMPLEX_VECTOR_UTILS_H
+#define ASSIGNMENT1_COMPLEX_VECTOR_UTILS_H
 
 //
 // Created by hughm on 13/03/2023.
 //
-#pragma once
 
 #include <vector>
 #include <functional>
@@ -73,13 +72,13 @@ cvec operator-=(cvec & v, const cdouble & a);
 cvec operator-(cvec v, const cdouble & a);
 cvec operator-(const cdouble & a, cvec v);
 
+
+
 //=======================================================
 //Conversions & Integrations
-double vint(const cvec& a, double dx=0);
-double vsum(const cvec& a);
+cdouble vint(const cvec& a, double dx=0);
+cdouble vsum(const cvec& a);
 cvec vdiff(const cvec& a, double dx=0);
-std::vector<double> make_grid(double rmin = 0.001, double rmax = 100, int n_grid = 101);
-cvec vec_from_func(const function_1D& V, const std::vector<double> & rgrid);
 
 //=======================================================
 // Complex specific functions
@@ -94,9 +93,11 @@ double vnorm(const cvec& a);
 //=======================================================
 //Utility Functions
 void printv(const cvec& a, const std::string & sep = ", ", std::ostream & targ = std::cout);
-void printv(const rvec& a, const std::string & sep = ", ", std::ostream & targ = std::cout);
 cvec vcopy(cvec a);
 cvec zeros_like(cvec a);
 
+//=======================================================
+// Vector Products
+cdouble operator&(const cvec & a, const cvec & b);
 
 #endif //ASSIGNMENT1_VECTOR_UTILS_H
