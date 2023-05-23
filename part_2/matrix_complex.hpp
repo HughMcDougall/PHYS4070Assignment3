@@ -64,6 +64,18 @@ namespace matrix_complex{
             return(out);
         }
 
+        sqmatrix_complex transpose(){
+            /// Return a transposed copy of this matrix
+            sqmatrix_complex out(_N);
+            for (int i=0;i<_N;i++){
+                for (int j=0;j<_N;j++){
+                    out.at(i,j)=at(j,i);
+                }
+            }
+
+            return(out);
+        }
+
     };//sqmatrix_complex
     // -----------------------------
     //Declare overload operators. Defined properly in cpp file

@@ -9,6 +9,18 @@
 #include "_defs.hpp"
 
 int main(int argc, char *argv[]) {
+	/// Self-interacting particle in a box simulator for PHYS4070 assigment 3 Pt 1.
+	/// INPUTS
+	///	var			type		constraint				desc
+	///	mode		int			1-3						Determines the type of simulation to run. 1- cos wave, 2- sech wave, 3 - double sech wave
+	///	g			double		0.0						Strength of particle self-interaction
+	///	output_dir	str			results/sim_results		Filename to save outputs to
+	///	u			double		0.0						Momentum for use in parts 2 and 3
+	///	phi			double		0.0						Phase shift for use in part 3
+	///	Tmax		double	>0	40.0					Maximum simulation time
+	///	dt			double	>0,	<tmax	0.01			Timestep for RK4 integration
+	///	sparse		int	>	0,	<maxits	1				Number of int steps per output line. Increase if output files are becoming too large.
+
     //-------------------------
     // Sim parameters
     double L = 20.0;    // Length & subdivisions
@@ -23,7 +35,7 @@ int main(int argc, char *argv[]) {
     // Physical Properties
 
     // Type of wave to simulate
-    int mode = 3;       // 1- cosine, 2- single soliton, 3- double soliton
+    int mode = 1;       // 1- cosine, 2- single soliton, 3- double soliton
     double g = 0.0;     // Attractive potential
 
     // Soliton Properties
@@ -123,7 +135,7 @@ int main(int argc, char *argv[]) {
     //----------------------------
     // Sim Loop
     cvec Y = vcopy(Y0);
-    printv(real_d(Y),"\t",outfile_real);
+    printv(real_d(Y),"\t",outfile_real); //Save initial frame
     printv(imag_d(Y),"\t",outfile_imag);
 
     for(int m=0;m<M;m++){

@@ -13,6 +13,7 @@ namespace matrix{
 
 //Addition
     sqmatrix operator+=(sqmatrix &a, const sqmatrix &b){
+        assert( a.N()==b.N() && "Tried to add two matrices of different sizes");
         for (unt i=0; i < a.N(); i++){
             for (unt j=0; j < a.N(); j++){
                 a.at(i,j) += b.at(i,j);
@@ -24,6 +25,7 @@ namespace matrix{
 
 //Subtraction
     sqmatrix operator-=(sqmatrix &a, const sqmatrix &b){
+        assert( a.N()==b.N() && "Tried to subtract two matrices of different sizes");
         for (unt i=0; i < a.N(); i++){
             for (unt j=0; j < a.N(); j++){
                 a.at(i,j) -= b.at(i,j);
@@ -35,6 +37,7 @@ namespace matrix{
 
 //Multiplication
     sqmatrix operator*=(sqmatrix &a, const sqmatrix &b){
+        assert( a.N()==b.N() && "Tried to multiply two matrices of different sizes");
         for (unt i=0; i < a.N(); i++){
             for (unt j=0; j < a.N(); j++){
                 a.at(i,j) *= b.at(i,j);
@@ -46,6 +49,7 @@ namespace matrix{
 
 //Division
     sqmatrix operator/=(sqmatrix &a, const sqmatrix &b){
+        assert( a.N()==b.N() && "Tried to divide two matrices of different sizes");
         for (unt i=0; i < a.N(); i++){
             for (unt j=0; j < a.N(); j++){
                 a.at(i,j) /= b.at(i,j);
@@ -147,6 +151,9 @@ namespace matrix{
 
         for(unt i =0; i<N; i++){
             for(unt j =0; j<N; j++){
+
+                // Skip empty cells. Will save time for sparse matrices
+                if(a.at(i,j)==0){continue;}
 
                 for(unt k =0; k<M; k++){
                     for(unt l =0; l<M; l++){

@@ -1,0 +1,57 @@
+;This file was created by Graph (http://www.padowan.dk)
+;Do not change this file from other programs.
+[Graph]
+Version = 4.4.2.543
+MinVersion = 2.5
+OS = Windows NT 6.2 
+
+[Axes]
+xMin = 0
+xMax = 2.2
+xTickUnit = 0.5
+xGridUnit = 0.5
+xShowGrid = 1
+xLabel = θ / π
+yMin = 0
+yMax = 7
+yTickUnit = 2
+yGridUnit = 2
+yShowGrid = 1
+yLabel = Minimum Peak-Peak Separation
+AxesColor = clBlue
+GridColor = 0x00FF9999
+NumberFont = CMU Serif,10,clBlack,B
+LabelFont = CMU Serif,12,clBlack,B
+LegendFont = CMU Serif,8,clBlack,B
+ShowLegend = 0
+Radian = 1
+AxesStyle = 2
+
+[PointSeries1]
+FillColor = clBlue
+LineColor = clBlack
+Size = 6
+Style = 1
+LineSize = 2
+LineStyle = 2
+LabelPosition = 1
+PointCount = 9
+Points = 0,0.16;0.1,2.99;0.25,4.09;0.5,5.35;1,5.83;1.5,5.35;1.75,4.09;1.9,2.99;2,0.16;
+LegendText = Series 1
+
+[Data]
+TextLabelCount = 0
+FuncCount = 0
+PointSeriesCount = 1
+ShadeCount = 0
+RelationCount = 0
+OleObjectCount = 0
+
+[CustomFunctions]
+a = 1
+
+[Animate]
+Constant = a
+FramesPerSecond = 1
+%a = 0;1;.1
+

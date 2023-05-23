@@ -64,7 +64,7 @@ print("Doing mode %i plots for %s" %(mode,filename))
 
 #------------------------------------
 # ANIMATION
-fig,ax = plt.subplots(1,1, sharex=True, sharey=True)
+fig,ax = plt.subplots(1,1, sharex=True, sharey=True, figsize=(6,3))
 
 real, = ax.plot(X, REAL[0,:],   lw=1,   alpha=0.5, label = 'Re ($\psi$)')
 imag, = ax.plot(X, IMAG[0,:],   lw=1,   alpha=0.5, label = 'Im ($\psi$)')
@@ -105,7 +105,7 @@ if mode == 1 or mode==2:
     #------------------------------------
 
     #Plot phase of peak or midpoint
-    fig2, ax2 = plt.subplots(1,1, sharex=True, sharey=True)
+    fig2, ax2 = plt.subplots(1,1, sharex=True, sharey=True, figsize = (6,3))
 
     realpeak = np.array([real[i] for real, i in zip(REAL,index_p)])
     imagpeak = np.array([imag[i] for imag, i in zip(IMAG,index_p)])
@@ -114,6 +114,17 @@ if mode == 1 or mode==2:
     real_av = np.array([np.sum(real * norm) / np.sum(norm) for real,norm in zip(REAL,NORM)])
     imag_av = np.array([np.sum(imag * norm) / np.sum(norm) for imag,norm in zip(IMAG,NORM)])
     norm_av = np.array([np.sum(norm * norm) / np.sum(norm) for norm,norm in zip(NORM,NORM)])
+
+    if mode==2:
+        #Plot Position of peak
+        fig_peakloc, ax_peakloc = plt.subplots(1,1, sharex=True, sharey=True, figsize = (6,2))
+
+        ax_peakloc.plot(T, X_p, c= 'dodgerblue', lw=2, label="Peak Location")
+        ax_peakloc.plot(T, X_av, c = 'blue', lw=1, label="Average Position")
+        ax_peakloc.legend()
+        fig_peakloc.supxlabel("Time")
+        ax_peakloc.axhline(0, c='k', lw=2, zorder=-1, ls='--')
+        fig_peakloc.tight_layout()
 
     #----------------------------
     ax2.plot(T,realpeak,    lw=1)
@@ -126,7 +137,7 @@ if mode == 1 or mode==2:
 
     #------------------------------------
     # Phase diagram
-    fig3, ax3 = plt.subplots(1,1, figsize=(5,5))
+    fig3, ax3 = plt.subplots(1,1, figsize=(3,3))
 
     thet = np.arctan2(imagpeak, realpeak)
     thet = np.linspace(np.min(thet),np.max(thet),256)
@@ -141,6 +152,7 @@ if mode == 1 or mode==2:
     ax3.set_ylabel('Im ($\psi$)')
     
     ax3.axis('square')
+    fig3.tight_layout()
 
     #------------------------------------
 elif mode==3:
@@ -160,7 +172,7 @@ elif mode==3:
 
     #====
     # Peak-Peak separations
-    fig_peak, ax_peak = plt.subplots(1,2,   sharex=False, sharey=True)
+    fig_peak, ax_peak = plt.subplots(1,2,   sharex=False, sharey=True, figsize=(6,3))
 
     ax_peak[0].plot(X_p1,       T)
     ax_peak[0].plot(X_p2,       T)
@@ -187,13 +199,15 @@ elif mode==3:
     ax_peak[0].set_title("Peak Locations")
     ax_peak[1].set_title("Peak Separation")
     
+    fig_peak.supylabel("Time")
+    fig_peak.supxlabel("Peak Separation")
     fig_peak.tight_layout()
-    fig.supylabel("Time")
+
     #====
     
     print("Peak-Peak Separation:")
-    print("\t max:\t %.2f" %minsep)
-    print("\t min:\t %.2f" %maxsep)
+    print("\t max:\t %.2f" %maxsep)
+    print("\t min:\t %.2f" %minsep)
     print("\t  av:\t %.2f" %avsep)
     
 plt.show()

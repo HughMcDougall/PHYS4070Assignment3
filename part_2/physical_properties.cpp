@@ -58,6 +58,24 @@ sqmatrix sigma_x(int N, int m){
     return out;
 }
 
+sqmatrix _hamiltonian_int(int N){
+    /// An alternate way of calculating the hamiltonian interaction term without as many matrix mults
+
+    sqmatrix out(pow(2,N));
+
+    sqmatrix A(2);
+    A.at(0,1) = 0.5;
+    A.at(1,0) = 0.5;
+    sqmatrix C = kron_prod(A,A);
+
+    out+=kron_prod(A, kron_prod(matrix::eye(pow(2,N-2)), A));
+    for (int m=0; m<N-1; m++){
+        out+= kron_prod(matrix::eye(pow(2,m)), kron_prod(C, matrix::eye(pow(2,N-m-2))));
+    }
+
+    return out;
+}
+
 //--------------------------------------
 // Hamiltonian
 
@@ -65,9 +83,10 @@ sqmatrix hamiltonian(int N, double g){
     /// Calculates the hamiltonian
     sqmatrix out(pow(2,N));
 
+    out-= _hamiltonian_int(N) * g;
     for (int m=0; m<N; m++){
         out-=sigma_z(N,m);
-        out-= g * (sigma_x(N,m) & sigma_x(N,m+1));
+        //out-= g * (sigma_x(N,m) & sigma_x(N,m+1));
     }
 
     return out;
@@ -81,6 +100,7 @@ sqmatrix S_z(int N){
     for (int m=0; m<N; m++){
         out+=sigma_z(N,m);
     }
+
     return out;
 }
 
