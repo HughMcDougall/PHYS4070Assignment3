@@ -3,7 +3,7 @@
 717	940	7062593786989536	Assignment_3.exe	52882aaf1d0b0c8d
 34	969	7051202800812863	CMakeFiles/Assignment_3.dir/complex_vector_utils.cpp.obj	7fc18f58d52aa5e
 11	463	7059188607323905	CMakeFiles/Assignment_3.dir/part_2/LP_solvers.cpp.obj	dfd874c2570555ee
-1	173	7062972610026052	build.ninja	f87a7fa5ced3c49a
+1	173	7065920748175085	build.ninja	f87a7fa5ced3c49a
 7	610	7051203622225510	CMakeFiles/Assignment_3.dir/forces_and_integrators.cpp.obj	8aa2e6f41f57a044
 9	1144	7062634395846717	CMakeFiles/Assignment_3.dir/part_2/main.cpp.obj	5483cdd2a2b50ab4
 28	876	7062616529038932	CMakeFiles/Assignment_3.dir/part_2/matrix.cpp.obj	5b54bd05836df1e5

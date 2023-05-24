@@ -98,20 +98,28 @@ int main(int argc, char *argv[]) {
     sqmatrix_complex CXX= real_to_complex(C_xx(N));
     double sz, sx, cxx;
 
+    std::cout<<"----------\n";
+    SZ.print();
+    std::cout<<"----------\n";
+    printv(ground_state,"\n");
+    std::cout<<"----------\n";
+    printv(psi0,"\n");
+
+    std::cout<<"----------\n";
+    printv(SZ & ground_state,"\n");
+    std::cout<<"----------\n";
+    printv(SZ & psi0,"\n");
+
+    std::cout<<"----------\n";
+    std::cout<< (ground_state & (S_z(N) & ground_state)) <<"\n";
+    std::cout<<"----------\n";
+    std::cout<<(psi0 & (SZ & psi0))<<"\n";
+
+
     //-------------------------
     // Perform time integration
 
-    std::ofstream outfile_real(outurl+"-real.dat");
-    std::ofstream outfile_imag(outurl+"-imag.dat");
-
-    std::ofstream outfile_Sz(outurl+"-Sz.dat");
-    std::ofstream outfile_Sx(outurl+"-Sx.dat");
-    std::ofstream outfile_Cxx(outurl+"-Cxx.dat");
-
-
-    printv(real_d(psi0),"\t",outfile_real);
-    printv(imag_d(psi0),"\t",outfile_imag);
-
+    return 0;
     std::cout << "Starting time series \n";
     for(int i=0;i<n_t;i++){
         if (i%10==0){std::cout<<"\t Step "<<i<<" of "<<n_t<<"\n";}
@@ -129,28 +137,7 @@ int main(int argc, char *argv[]) {
         sz = real(psi & (SZ  & psi));
         sx = real(psi & (SX  & psi));
         cxx= real(psi & (CXX & psi));
-
-        // Save Outputs
-        printv(real_d(psi),"\t",outfile_real);
-        printv(imag_d(psi),"\t",outfile_imag);
-
-        outfile_Sz << sz  <<"\n";
-        outfile_Sx << sx  <<"\n";
-        outfile_Cxx<< cxx <<"\n";
-
     }
-    outfile_real.close();
-    outfile_imag.close();
-
-    outfile_Sz.close();
-    outfile_Sx.close();
-    outfile_Cxx.close();
-
-    // Save Time axis
-    std::ofstream outfile_T(outurl+"-T.dat");
-    printv(T, "\t", outfile_T); // Save time
-    outfile_T.close();
-
     //-------------------------
     std::cout << "Done \n";
 

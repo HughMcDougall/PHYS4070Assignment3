@@ -76,9 +76,9 @@ ax_spins[0].plot(T,SZ/N, c='crimson')
 ax_spins[1].plot(T,SX/N, c='gold')
 ax_spins[2].plot(T,CXX/N, c='navy')
 
-ax_spins[0].set_ylabel("$S_z$", fontsize = 12)
-ax_spins[1].set_ylabel("$S_x$", fontsize = 12)
-ax_spins[2].set_ylabel("$C_{xx}$", fontsize = 12)
+ax_spins[0].set_ylabel("$S_z / N$", fontsize = 12)
+ax_spins[1].set_ylabel("$S_x / N$", fontsize = 12)
+ax_spins[2].set_ylabel("$C_{xx} / N$", fontsize = 12)
 
 ax_spins[0].axhline(0, ls = '--', c='k', zorder=-10)
 ax_spins[1].axhline(0, ls = '--', c='k', zorder=-10)
