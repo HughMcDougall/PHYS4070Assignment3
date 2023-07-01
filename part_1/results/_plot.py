@@ -209,5 +209,14 @@ elif mode==3:
     print("\t max:\t %.2f" %maxsep)
     print("\t min:\t %.2f" %minsep)
     print("\t  av:\t %.2f" %avsep)
-    
+
+#==========================
+plt.figure(figsize = (8,4))
+dx = L/(N-1)
+NORMALL = np.sum(NORM,axis=1)* dx
+
+plt.plot(T,NORMALL)
+plt.xlabel("Time")
+plt.ylabel("Total Signal Norm, $\int |\psi|^2 dx$")
+plt.ylim(0,np.max(NORMALL*1.2))
 plt.show()

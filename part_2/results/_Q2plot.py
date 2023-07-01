@@ -9,7 +9,7 @@ currently exist in the ./results folder. If you're having issues with this, remo
 '''
 TARGS = ['energies-4.dat', 'energies-5.dat', 'energies-6.dat', 'energies-8.dat', 'energies-10.dat']
 TARGS = [targ[2:] for targ in glob("./*") if targ[2:] in TARGS]
-TARGS = []
+#TARGS = []
 
 if len(TARGS)==0:
     print("There seems to be an error loading files for plotting. please open the _Q2plot.py file for help")
